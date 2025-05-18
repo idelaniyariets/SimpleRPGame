@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://cbsmh7svnnw66"]
+
+[ext_resource type="Script" path="res://Scenes/collectables/attack_poison/collectable_attack_poison.gd" id="1_1rxey"]
+[ext_resource type="Texture2D" uid="uid://cvxll7hhpqi6o" path="res://Assets/Red Potions/poЗ¦o vermelha.png" id="2_ok1aa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8enu4"]
+radius = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ehm4"]
+atlas = ExtResource("2_ok1aa")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pghj"]
+atlas = ExtResource("2_ok1aa")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw2td"]
+atlas = ExtResource("2_ok1aa")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isf35"]
+atlas = ExtResource("2_ok1aa")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sega6"]
+atlas = ExtResource("2_ok1aa")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyp0y"]
+atlas = ExtResource("2_ok1aa")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udflq"]
+atlas = ExtResource("2_ok1aa")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fjdx"]
+atlas = ExtResource("2_ok1aa")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e0lu7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ehm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pghj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw2td")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isf35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sega6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyp0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udflq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fjdx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c0mgj"]
+radius = 6.0
+
+[node name="collectable_attack_poison" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_1rxey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8enu4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.19209e-07, 1.19209e-07)
+scale = Vector2(0.8125, 0.8125)
+sprite_frames = SubResource("SpriteFrames_e0lu7")
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_c0mgj")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

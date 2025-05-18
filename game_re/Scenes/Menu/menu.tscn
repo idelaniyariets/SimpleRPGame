@@ -1,0 +1,157 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhk77onpovjic"]
+
+[ext_resource type="Script" path="res://Scenes/Menu/menu.gd" id="1_y1umi"]
+[ext_resource type="PackedScene" uid="uid://bwaxk0c57tiax" path="res://Scenes/BackGround/parallax_background.tscn" id="2_03ycq"]
+[ext_resource type="PackedScene" uid="uid://d37aevrblfwab" path="res://Scenes/controls/controls_menu.tscn" id="3_goptt"]
+[ext_resource type="Texture2D" uid="uid://dkyjolgjb13dr" path="res://Assets/telegram_icon-icons.com_72055 (2).png" id="3_m37aw"]
+[ext_resource type="Texture2D" uid="uid://j7645v8tefiq" path="res://Assets/icons8-vk-64.png" id="4_r236i"]
+[ext_resource type="AudioStream" uid="uid://bcn58lpw1ofre" path="res://Assets/cloud-of-sorrow-13984.mp3" id="6_eelbi"]
+[ext_resource type="AudioStream" uid="uid://c1kn0xu2bsurv" path="res://Assets/click-21156 (1).mp3" id="7_bewew"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_y1umi")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_03ycq")]
+unique_name_in_owner = true
+follow_viewport_scale = 1000.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.364
+anchor_top = 0.26
+anchor_right = 0.64
+anchor_bottom = 0.379
+offset_left = -0.22403
+offset_top = 0.319977
+offset_right = -0.240051
+offset_bottom = -0.0720215
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "Играть"
+icon_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer3"]
+anchors_preset = -1
+anchor_left = 0.364
+anchor_top = 0.423
+anchor_right = 0.64
+anchor_bottom = 0.542
+offset_left = -0.22403
+offset_top = 0.135986
+offset_right = -0.240051
+offset_bottom = -0.256042
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button3" type="Button" parent="CanvasLayer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 45
+text = "Загрузить игру"
+icon_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer2"]
+anchors_preset = -1
+anchor_left = 0.364
+anchor_top = 0.586
+anchor_right = 0.64
+anchor_bottom = 0.704
+offset_left = -0.22403
+offset_top = -0.0480347
+offset_right = -0.240051
+offset_bottom = 0.327942
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Button2" type="Button" parent="CanvasLayer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "Выйти"
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer4" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer4"]
+offset_right = 184.0
+offset_bottom = 44.0
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer4/HBoxContainer"]
+layout_mode = 2
+
+[node name="CanvasLayer5" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer5"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -63.0
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Button4" type="Button" parent="CanvasLayer5/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "?"
+
+[node name="CanvasLayer6" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer6"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -116.0
+offset_top = -64.0
+offset_right = -52.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer6/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_m37aw")
+
+[node name="TextureButton2" type="TextureButton" parent="CanvasLayer6/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_r236i")
+
+[node name="CanvasLayer7" type="CanvasLayer" parent="."]
+
+[node name="Controls_menu" parent="CanvasLayer7" instance=ExtResource("3_goptt")]
+z_index = 10
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("6_eelbi")
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_bewew")
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer3/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="CanvasLayer2/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer5/HBoxContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="CanvasLayer6/HBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="CanvasLayer6/HBoxContainer/TextureButton2" to="." method="_on_texture_button_2_pressed"]

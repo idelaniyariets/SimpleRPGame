@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://btx0hgig4rle1"]
+
+[ext_resource type="Texture2D" uid="uid://kd3yx81hdwhm" path="res://Assets/фон кирпичи.png" id="1_6dlwj"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+position = Vector2(-4, -7)
+motion_mirroring = Vector2(3265, 0)
+
+[node name="ФонКирпичи" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(1637.14, 333.25)
+scale = Vector2(1.10575, 1.10575)
+texture = ExtResource("1_6dlwj")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+position = Vector2(-4, 646)
+motion_mirroring = Vector2(3265, 0)
+
+[node name="ФонКирпичи" type="Sprite2D" parent="ParallaxLayer4"]
+position = Vector2(1637.14, 333.25)
+scale = Vector2(1.10575, 1.10575)
+texture = ExtResource("1_6dlwj")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+position = Vector2(-4, -660)
+motion_mirroring = Vector2(3265, 0)
+
+[node name="ФонКирпичи" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(1637.14, 333.25)
+scale = Vector2(1.10575, 1.10575)
+texture = ExtResource("1_6dlwj")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+position = Vector2(-5, -1314)
+motion_mirroring = Vector2(3265, 0)
+
+[node name="ФонКирпичи" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(1637, 334)
+scale = Vector2(1.10575, 1.10575)
+texture = ExtResource("1_6dlwj")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="."]
+position = Vector2(-5, -1967)
+motion_mirroring = Vector2(3265, 0)
+
+[node name="ФонКирпичи" type="Sprite2D" parent="ParallaxLayer5"]
+position = Vector2(1637, 334)
+scale = Vector2(1.10575, 1.10575)
+texture = ExtResource("1_6dlwj")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="."]
+position = Vector2(-4, 1299)
+motion_mirroring = Vector2(3265, 0)
+
+[node name="ФонКирпичи" type="Sprite2D" parent="ParallaxLayer6"]
+position = Vector2(1637.14, 333.25)
+scale = Vector2(1.10575, 1.10575)
+texture = ExtResource("1_6dlwj")

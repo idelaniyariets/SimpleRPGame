@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://c171y0rtubp6e"]
+
+[ext_resource type="Texture2D" uid="uid://dyt2j6uoyk7ws" path="res://Assets/oak_woods_v1.0/decorations/shop_anim.png" id="1_fbg55"]
+[ext_resource type="Script" path="res://Scenes/shop/shop.gd" id="1_twonj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2ehr"]
+atlas = ExtResource("1_fbg55")
+region = Rect2(0, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g8ih"]
+atlas = ExtResource("1_fbg55")
+region = Rect2(118, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5hix"]
+atlas = ExtResource("1_fbg55")
+region = Rect2(236, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mavqe"]
+atlas = ExtResource("1_fbg55")
+region = Rect2(354, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlaqs"]
+atlas = ExtResource("1_fbg55")
+region = Rect2(472, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d82n"]
+atlas = ExtResource("1_fbg55")
+region = Rect2(590, 0, 118, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o734t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2ehr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0g8ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5hix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mavqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlaqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4d82n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1oelr"]
+size = Vector2(163, 131)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cfv7"]
+size = Vector2(28, 133)
+
+[node name="Shop" type="Node2D"]
+script = ExtResource("1_twonj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o734t")
+frame_progress = 0.931084
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_1oelr")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -126.0
+offset_top = -46.0
+offset_right = -86.0
+offset_bottom = -23.0
+
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(14, 1.5)
+shape = SubResource("RectangleShape2D_1cfv7")
+debug_color = Color(0, 0.641761, 0.329063, 0.42)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

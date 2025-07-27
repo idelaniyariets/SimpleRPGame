@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=4 uid="uid://b1piass1yrmvw"]
+[gd_scene load_steps=109 format=4 uid="uid://b1piass1yrmvw"]
 
 [ext_resource type="Script" path="res://Scenes/Level_5/level_5.gd" id="1_4tb74"]
 [ext_resource type="Texture2D" uid="uid://baeyhonboodsw" path="res://Assets/PNG/environment/layers/background.png" id="1_s1yjj"]
@@ -191,7 +191,7 @@ func _on_g_pressed():
 		get_tree().create_tween().parallel().tween_property($\"../CanvasLayer/AnimatedSprite2D3\", \"modulate\", Color8(255,255,255,255), 1)
 		get_tree().create_tween().parallel().tween_property(label, \"text\", \"Уйди от меня!\", 1)
 		get_tree().create_tween().parallel().tween_property(label, \"modulate\", Color8(255, 255, 255, 255), 1)
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(1.2).timeout
 		get_tree().create_tween().parallel().tween_property(label, \"text\", \"\", 1)
 		get_tree().create_tween().parallel().tween_property(label, \"modulate\", Color8(225, 255, 255, 0), 1)
 		get_tree().create_tween().parallel().tween_property($\"../CanvasLayer/AnimatedSprite2D3\", \"modulate\", Color8(255,255,255,0), 1)
@@ -208,7 +208,7 @@ func _on_g_pressed():
 		await get_tree().create_timer(1.5).timeout
 		get_tree().create_tween().parallel().tween_property(label, \"text\", \"\", 1)
 		get_tree().create_tween().parallel().tween_property(label, \"modulate\", Color8(225, 255, 255, 0), 1)
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1.2).timeout
 		
 		label.position = Vector2(1118, 45)
 		get_tree().create_tween().parallel().tween_property(label, \"text\", \"Уйди от меня!\", 1)
@@ -317,30 +317,35 @@ size = Vector2(101, 139)
 [sub_resource type="GDScript" id="GDScript_rpsur"]
 script/source = "extends CharacterBody2D
 
-@onready var label = $Label2
+@onready var label_1 = $Label2
+@onready var label = $\"../CanvasLayer/Label\"
 
 func _ready() -> void:
 	Signals.g.connect(Callable(self, \"_on_g_pressed\"))
 
 func _on_area_2d_body_entered(_body):
-	label.text = \"Нажмите 'G' для взаимодействия\"
+	label_1.text = \"Нажмите 'G' для взаимодействия\"
 	await get_tree().create_timer(1).timeout
-	label.text = \"\"
+	label_1.text = \"\"
 
 func _on_area_2d_body_exited(_body):
-	label.text = \"\"
+	label_1.text = \"\"
 
 func _on_g_pressed():
-	label.text = \"\"
+	label_1.text = \"\"
 	if len($Area2D.get_overlapping_bodies())>=1:
 		GlobalVar.can_move = false
+		$\"../CanvasLayer/AnimatedSprite2D4\".visible = true
+		label.position = Vector2(1070, 45)
 		get_tree().create_tween().parallel().tween_property(label, \"text\", \"Отойдите от меня!\", 1)
 		get_tree().create_tween().parallel().tween_property(label, \"modulate\", Color8(255, 255, 255, 255), 1)
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1.2).timeout
 		
 		get_tree().create_tween().parallel().tween_property(label, \"text\", \"\", 1)
 		get_tree().create_tween().parallel().tween_property(label, \"modulate\", Color8(255, 255, 255, 0), 1)
+		get_tree().create_tween().parallel().tween_property($\"../CanvasLayer/AnimatedSprite2D4\", \"modulate\", Color8(255,255,255,0), 1)
 		await get_tree().create_timer(1).timeout
+		$\"../CanvasLayer/AnimatedSprite2D4\".visible = false
 		GlobalVar.can_move = true
 "
 
@@ -410,53 +415,61 @@ size = Vector2(102, 132)
 [sub_resource type="GDScript" id="GDScript_whwo2"]
 script/source = "extends CharacterBody2D
 
-@onready var label = $Label3
-
+@onready var label_1 = $Label3
+@onready var label = $\"../CanvasLayer/Label\"
 var count = 0
 
 func _ready() -> void:
 	Signals.g.connect(Callable(self, \"_on_g_pressed\"))
 
 func _on_area_2d_body_entered(_body):
-	label.text = \"Нажмите 'G' для взаимодействия\"
+	label_1.text = \"Нажмите 'G' для взаимодействия\"
 	await get_tree().create_timer(1).timeout
-	label.text = \"\"
+	label_1.text = \"\"
 
 func _on_area_2d_body_exited(_body):
-	label.text = \"\"
+	label_1.text = \"\"
 
 func _on_g_pressed():
-	label.text = \"\"
-	print(count)
+	label_1.text = \"\"
 	if count == 0 and len($Area2D.get_overlapping_bodies())>=1:
 		GlobalVar.can_move = false
+		$\"../CanvasLayer/AnimatedSprite2D5\".visible = true
+		label.position = Vector2(1010, 45)
 		get_tree().create_tween().parallel().tween_property(label, \"text\", \"Эй, не хочешь выпить?\", 1)
 		get_tree().create_tween().parallel().tween_property(label, \"modulate\", Color8(255, 255, 255, 255), 1)
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1.2).timeout
 		
 		get_tree().create_tween().parallel().tween_property(label, \"text\", \"\", 1)
 		get_tree().create_tween().parallel().tween_property(label, \"modulate\", Color8(255, 255, 255, 0), 1)
 		await get_tree().create_timer(1).timeout
 		
+		label.position = Vector2(955, 45)
 		get_tree().create_tween().parallel().tween_property(label, \"text\", \"А... Ой уходи отсюда быстрее\", 1)
 		get_tree().create_tween().parallel().tween_property(label, \"modulate\", Color8(255, 255, 255, 255), 1)
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1.2).timeout
 		
 		get_tree().create_tween().parallel().tween_property(label, \"text\", \"\", 1)
 		get_tree().create_tween().parallel().tween_property(label, \"modulate\", Color8(255, 255, 255, 0), 1)
+		get_tree().create_tween().parallel().tween_property($\"../CanvasLayer/AnimatedSprite2D5\", \"modulate\", Color8(255,255,255,0), 1)
 		await get_tree().create_timer(1).timeout
+		$\"../CanvasLayer/AnimatedSprite2D5\".visible = false
 		count = 1
 		GlobalVar.can_move = true
 		
 	elif count == 1 and len($Area2D.get_overlapping_bodies())>=1:
 		GlobalVar.can_move = false
+		$\"../CanvasLayer/AnimatedSprite2D5\".visible = true
+		label.position = Vector2(1050, 45)
 		get_tree().create_tween().parallel().tween_property(label, \"text\", \"Я же сказал уходи!\", 1)
 		get_tree().create_tween().parallel().tween_property(label, \"modulate\", Color8(255, 255, 255, 255), 1)
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1.2).timeout
 		
 		get_tree().create_tween().parallel().tween_property(label, \"text\", \"\", 1)
 		get_tree().create_tween().parallel().tween_property(label, \"modulate\", Color8(255, 255, 255, 0), 1)
+		get_tree().create_tween().parallel().tween_property($\"../CanvasLayer/AnimatedSprite2D5\", \"modulate\", Color8(255,255,255,0), 1)
 		await get_tree().create_timer(1).timeout
+		$\"../CanvasLayer/AnimatedSprite2D5\".visible = false
 		count = 2
 		GlobalVar.can_move = true
 "
@@ -835,6 +848,99 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbp3o"]
+atlas = ExtResource("14_mobev")
+region = Rect2(0, 0, 37, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3tlp"]
+atlas = ExtResource("14_mobev")
+region = Rect2(37, 0, 37, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv33i"]
+atlas = ExtResource("14_mobev")
+region = Rect2(111, 0, 37, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fftmy"]
+atlas = ExtResource("14_mobev")
+region = Rect2(148, 0, 37, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkila"]
+atlas = ExtResource("14_mobev")
+region = Rect2(185, 0, 37, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhdj0"]
+atlas = ExtResource("14_mobev")
+region = Rect2(222, 0, 37, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4nntq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbp3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3tlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv33i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fftmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkila")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhdj0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8doru"]
+atlas = ExtResource("15_uw7kw")
+region = Rect2(0, 0, 40, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ika6v"]
+atlas = ExtResource("15_uw7kw")
+region = Rect2(40, 0, 40, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_182tm"]
+atlas = ExtResource("15_uw7kw")
+region = Rect2(80, 0, 40, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2i0b"]
+atlas = ExtResource("15_uw7kw")
+region = Rect2(120, 0, 40, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l446g"]
+atlas = ExtResource("15_uw7kw")
+region = Rect2(160, 0, 40, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dlgfr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8doru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ika6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_182tm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2i0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l446g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Level_5" type="Node2D"]
 script = ExtResource("1_4tb74")
 
@@ -944,7 +1050,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("6_y2cr7")
 
 [node name="Barrel" type="Sprite2D" parent="Node2D"]
-position = Vector2(2017, 533)
+position = Vector2(1967, 533)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_fpiex")
 
@@ -1010,11 +1116,12 @@ position = Vector2(-6.5, -1.5)
 shape = SubResource("RectangleShape2D_6vljj")
 
 [node name="Label" type="Label" parent="CharacterBody2D"]
-offset_left = -115.0
-offset_top = -112.0
-offset_right = -35.0
-offset_bottom = -84.0
-theme_override_font_sizes/font_size = 20
+modulate = Color(1, 1, 1, 0.784314)
+offset_left = -114.0
+offset_top = -95.0
+offset_right = -34.0
+offset_bottom = -67.0
+theme_override_font_sizes/font_size = 15
 
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
 position = Vector2(1303, 488)
@@ -1042,14 +1149,15 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_4fbge")
 
 [node name="Label2" type="Label" parent="CharacterBody2D2"]
-offset_left = -61.0
-offset_top = -91.0
-offset_right = 19.0
-offset_bottom = -63.0
-theme_override_font_sizes/font_size = 20
+modulate = Color(1, 1, 1, 0.784314)
+offset_left = -114.0
+offset_top = -88.0
+offset_right = -34.0
+offset_bottom = -60.0
+theme_override_font_sizes/font_size = 15
 
 [node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
-position = Vector2(1974, 500)
+position = Vector2(1996, 502)
 collision_layer = 4
 collision_mask = 3
 script = SubResource("GDScript_whwo2")
@@ -1063,6 +1171,7 @@ position = Vector2(0.271023, 2.81007)
 scale = Vector2(2.31589, 2.31589)
 sprite_frames = SubResource("SpriteFrames_0m5ok")
 autoplay = "default"
+flip_h = true
 
 [node name="Area2D" type="Area2D" parent="CharacterBody2D3"]
 collision_layer = 0
@@ -1073,10 +1182,12 @@ position = Vector2(-1, 7)
 shape = SubResource("RectangleShape2D_nf0fy")
 
 [node name="Label3" type="Label" parent="CharacterBody2D3"]
-offset_left = -39.0
-offset_top = -95.0
-offset_right = 41.0
-offset_bottom = -72.0
+modulate = Color(1, 1, 1, 0.784314)
+offset_left = -111.0
+offset_top = -74.0
+offset_right = -31.0
+offset_bottom = -51.0
+theme_override_font_sizes/font_size = 15
 
 [node name="CharacterBody2D4" type="CharacterBody2D" parent="."]
 position = Vector2(2381.79, 480.715)
@@ -1149,21 +1260,24 @@ sprite_frames = SubResource("SpriteFrames_aaqt2")
 flip_h = true
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 1133.0
-offset_top = 61.0
-offset_right = 1276.0
-offset_bottom = 89.0
+offset_left = 1050.0
+offset_top = 45.0
+offset_right = 1348.0
+offset_bottom = 73.0
 theme_override_font_sizes/font_size = 20
 
-[node name="Label2" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 20
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(1309, 51)
+scale = Vector2(4.78261, 4.78261)
+sprite_frames = SubResource("SpriteFrames_4nntq")
 
-[node name="Label3" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 20
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(1296, 59)
+scale = Vector2(4.34783, 4.34783)
+sprite_frames = SubResource("SpriteFrames_dlgfr")
+flip_h = true
 
 [connection signal="body_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_exited"]

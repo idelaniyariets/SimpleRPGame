@@ -1,3 +1,30 @@
-Идея игры заключается в преодолении главным героем своих страхов и переживаний. В начале прохождения игрок не должен понимать, что происходит, ведь это нарушит атмосферу необъяснимости и тревожности. Все NPC (англ. none playable characters. неигровые персонажи) хоть и общаются с игроком, но не объясняют происходящего. Только под конец персонаж понимает, что проблемы можно победить только упорным трудом и работой над собой, а не убийством материализованных страхов.
+# SimpleRPGame
+---
+## Description
+This is an unnamed RPG game developed in Godot Engine for my individual project. The gameplay is not particularly attractive: you have to go through locations and destroy all the monsters until you get to the final boss. [You can read more in Chapter 2 of the file at the link](https://disk.yandex.ru/i/ajo15V2Yng3uyA) (Russian)
+>the game was supposed to carry a psychological message, but the inept game designer failed in his task :) (dev)
+## How to contribute?
+---
+1. open a terminal and enter the desired folder
+2. clone the repository `git clone https://github.com/idelaniyariets/SimpleRPGame`
+3. create a new branch `git branch add "amazing_feature"`
+4. after creating an amazing feature `git add .`
+5. commit changes `git commit -m "added an amazing feature"`
+6. push changes `git push origin amazing_feature`
 
-Сюжет игры начинается с мирного леса, где главного героя встречает неизвестный человек, который рассказывает ему о странностях этого места, но не раскрывает подробностей. Далее персонаж попадает на поляну, заполненную монстрами и понимает, что этот мир довольно опасен и не изведан. Когда главный герой доходит до конца поляны его встречает магазин, который телепортирует его обратно в лес. Окончательно становится понятно, что это место очень странное. Лес не был в таком же состоянии, в котором его покинул главный герой, и вместо моста образовался спуск в пещеру, в которую он решает пойти. В этой пещере расположен странный камень, который превращает персонажа в неизвестную сущность. Пройдя пещеру, герой оказывается в деревне, где встречает волшебника, который рассказывает ему о том, что произошло в пещере и сразу же предлагает способ спасения главного героя. Вновь персонаж оказывается под землей и встречает нового соперника; он оказывается гораздо сильнее, но все равно терпит поражение. Пройдя в следующее подземелье, герой вновь встречает человека из леса, который рассказывает ему несколько подробностей, но не желает задерживаться надолго и уходит. Идя дальше, персонаж видит видение, в котором показан захват деревни сущностями, похожими на ту, которая вселилась в героя, и тут он понял, что его проблемы влекут несчастье для других и решил все исправить во что бы то ни стало. Победив финального босса (более сильного противника), герой понимает, что можно спасти других, но спасти себя самого таким образом невозможно.
+## How to install?
+---
+1. go to releases page
+2. choose latest realese
+3. select the file that suits your OS
+4. install
+
+## Contact me
+---
+you can contact me via in-game links or via this links:
+1. [Telegram](https/t.me/IdEaLnIy_ArIeTs)
+2. [VK](https://m.vk.com/idealniyariets)
+
+## Speedrun???
+---
+This game has a lot of holes and I can't find them all. These holes provide you with a lot of speedrunning opportunities (some of them are deliberately hidden in the code). So if your speedrun is less than ten minutes or contains interesting skips and bugs you can send it to me and we'll discuss it (I hope it will be interesting)

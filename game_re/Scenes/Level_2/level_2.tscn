@@ -200,7 +200,7 @@ script = ExtResource("1_txhsr")
 [node name="Light" type="Node2D" parent="."]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Light"]
-color = Color(0.505966, 0.654858, 0.668901, 1)
+color = Color(0.505882, 0.654902, 0.670588, 1)
 energy = 0.6
 blend_mode = 1
 range_layer_min = -100
@@ -802,7 +802,7 @@ position = Vector2(3508, 190)
 position = Vector2(3393, -274)
 
 [node name="Player" parent="." instance=ExtResource("5_770an")]
-position = Vector2(86, 291)
+position = Vector2(70, 294)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

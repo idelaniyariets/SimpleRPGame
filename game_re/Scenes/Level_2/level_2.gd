@@ -4,6 +4,7 @@ extends Node2D
 
 func _ready() -> void:
 	#определение позиции игрока после загрузки
+	GlobalVar.level = 2
 	if GlobalVar.loaded == true:
 		player.position = GlobalVar.player_pos
 		GlobalVar.loaded = false

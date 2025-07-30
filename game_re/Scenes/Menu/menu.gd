@@ -49,7 +49,7 @@ func _on_button_3_pressed():
 	$AudioStreamPlayer2.play()
 	await $AudioStreamPlayer2.finished
 #C:\Users\User\AppData\Roaming\Godot\app_userdata\Game_re
-	if not FileAccess.file_exists("user://the_game_save_pos_x.sus"):
+	if not FileAccess.file_exists("user://the_game_save.tgs"):
 		print_debug("there is no saves")
 		get_tree().create_tween().tween_property(button_3, "text", "Нет сохранений", 0.6)
 	else:

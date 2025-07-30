@@ -25,7 +25,7 @@ func _on_button_3_pressed():
 	#проверяет есть ли файлы в системе и загружает игру
 	$AudioStreamPlayer.play()
 	await $AudioStreamPlayer.finished
-	if FileAccess.file_exists("user://the_game_save_pos_x.sus"):
+	if FileAccess.file_exists("user://the_game_save.tgs"):
 		Signals.load.emit()
 		Manager.game_paused = false
 	else:

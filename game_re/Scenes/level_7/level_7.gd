@@ -93,6 +93,8 @@ func _on_area_2d_8_body_entered(_body) -> void:
 
 func _on_area_2d_9_body_entered(_body):
 	#смена уровня
+	get_tree().create_tween().tween_property($Light/DirectionalLight2D, "energy", 1, 1)
+	await  get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_file("res://Scenes/level_8/level_8_final.tscn")
 
 func _on_area_2d_10_body_entered(_body):

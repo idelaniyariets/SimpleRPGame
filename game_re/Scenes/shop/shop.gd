@@ -19,6 +19,8 @@ func _on_area_2d_2_body_entered(_body):
 	$Label.text = "A...a?"
 	await get_tree().create_timer(1).timeout
 	$Label.text = "AAAAAA"
+	get_tree().create_tween().parallel().tween_property($"../Light/DirectionalLight2D", "color", Color8(0, 192, 62, 255), 0.5)
+	get_tree().create_tween().parallel().tween_property($"../Light/DirectionalLight2D", "energy", 2, 0.5)
 	await get_tree().create_timer(0.5).timeout
 	$Label.text = ""
 	get_tree().change_scene_to_file("res://Scenes/Level_3/level_3.tscn")

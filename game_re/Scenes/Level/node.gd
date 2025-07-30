@@ -1,18 +1,11 @@
 extends Node
 #создание путей и файлов для сохранения переменных
-var save_path_level_n_damage = "user://the_game_save_level_n_damage.sus"
-var save_path_pos_x = "user://the_game_save_pos_x.sus"
-var save_path_pos_y = "user://the_game_save_pos_y.sus"
-var save_path_hp = "user://the_game_save_hp.sus"
-var save_path_max_hp = "user://the_game_save_max_hp.sus"
-var save_path_damage = "user://th_game_save_damage.sus"
-var save_path_mob2 = "user://th_game_save_mob2.sus"
-var save_path_mob3 = "user://th_game_save_mob3.sus"
-var save_path_mob4 = "user://th_game_save_mob4.sus"
-var save_path_mob5 = "user://th_game_save_mob6.sus"
-var save_path_mob6 = "user://th_game_save_mob7.sus"
+var save_string_path = "user://the_game_save.tgs"
+#объявление переменных
 var game_paused = false
 var active_menu = false
+var TO_SAVE
+var loaded
 
 func _ready() -> void:
 	#получение сигналов от кнопок
@@ -41,45 +34,32 @@ func _process(_delta: float) -> void:
 		Signals.hide_menu.emit()
 		active_menu = false
 	
-
-
 func save_game():
-#C:\Users\User\AppData\Roaming\Godot\app_userdata\Game_re
+#C:\Users\User\AppData\Roaming\Godot\app_userdata\Game_desktop
 	#сохранение переменных в определенных файлах под одним путем
-	var file = FileAccess.open(save_path_level_n_damage, FileAccess.WRITE)
-	var pos_file_x = FileAccess.open(save_path_pos_x, FileAccess.WRITE)
-	var pos_file_y = FileAccess.open(save_path_pos_y, FileAccess.WRITE)
-	var hp_file = FileAccess.open(save_path_hp, FileAccess.WRITE)
-	var max_hp_file = FileAccess.open(save_path_max_hp, FileAccess.WRITE)
-	var damage_file = FileAccess.open(save_path_damage, FileAccess.WRITE)
-	var mob2_file = FileAccess.open(save_path_mob2, FileAccess.WRITE)
-	file.store_var(GlobalVar.level)
-	pos_file_x.store_var(GlobalVar.player_pos.x)
-	pos_file_y.store_var(GlobalVar.player_pos.y)
-	hp_file.store_var(GlobalVar.player_health)
-	max_hp_file.store_var(GlobalVar.player_health_max_value)
-	damage_file.store_var(GlobalVar.player_damage)
-	mob2_file.store_var(GlobalVar.child_list2)
+	TO_SAVE = [GlobalVar.level,
+ GlobalVar.player_damage,
+ GlobalVar.player_health,
+ GlobalVar.player_health_max_value,
+ GlobalVar.player_pos.x,
+ GlobalVar.player_pos.y]
+	var file = FileAccess.open(save_string_path, FileAccess.WRITE)
+	file.store_var(TO_SAVE)
 	print_debug("sucsess")
 	
 func load_game():
 	#запись переменных из файлов, сохраненны ранее
 	GlobalVar.loaded = true
 	GlobalVar.can_move = true
-	var file = FileAccess.open(save_path_level_n_damage, FileAccess.READ)
-	var pos_file_x = FileAccess.open(save_path_pos_x, FileAccess.READ)
-	var pos_file_y = FileAccess.open(save_path_pos_y, FileAccess.READ)
-	var hp_file = FileAccess.open(save_path_hp, FileAccess.READ)
-	var max_hp_file = FileAccess.open(save_path_max_hp, FileAccess.READ)
-	var damage_file = FileAccess.open(save_path_damage, FileAccess.READ)
-	var mob2_file = FileAccess.open(save_path_mob2, FileAccess.READ)
-	GlobalVar.level = file.get_var(GlobalVar.level)
-	GlobalVar.player_pos.x = pos_file_x.get_var(GlobalVar.player_pos.x)
-	GlobalVar.player_pos.y = pos_file_y.get_var(GlobalVar.player_pos.y)
-	GlobalVar.player_health = hp_file.get_var(GlobalVar.player_health)
-	GlobalVar.player_health_max_value = max_hp_file.get_var(GlobalVar.player_health_max_value)
-	GlobalVar.player_damage = damage_file.get_var(GlobalVar.player_damage)
-	GlobalVar.child_list2 = mob2_file.get_var()
+	var file = FileAccess.open(save_string_path, FileAccess.READ)
+	loaded = file.get_var()
+	print(loaded)
+	GlobalVar.level = loaded[0]
+	GlobalVar.player_damage = loaded[1]
+	GlobalVar.player_health = loaded[2]
+	GlobalVar.player_health_max_value = loaded[3]
+	GlobalVar.player_pos.x = loaded[4]
+	GlobalVar.player_pos.y = loaded[5]
 #перемещение игрока на уровни
 	if GlobalVar.level == 1:
 		get_tree().change_scene_to_file("res://Scenes/Level/level.tscn")
@@ -109,7 +89,6 @@ func _on_load():
 func _on_save():
 	#вызов функции сохранения по сигналу
 	save_game()
-
 
 func _on_timer_timeout():
 	save_game()
